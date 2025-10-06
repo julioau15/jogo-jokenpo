@@ -20,7 +20,7 @@ public class Jokenpo {
     //\033[48;5;Xm
     public void iniciarJogo(){
         System.out.println(backgroundGrey + "----------------------------------------" + reset);
-        System.out.println(backgroundGrey + "**************  JOKÊNPO  ***************" + reset);
+        System.out.println(backgroundGrey + "**************  JOKENPÔ  ***************" + reset);
         System.out.println(backgroundGrey + "----------------------------------------" + reset);
         System.out.println(backgroundGrey + "       >>> ESCOLHA UMA OPÇÃO <<<        " + reset);
         System.out.println(backgroundGrey + "----------------------------------------" + reset);
