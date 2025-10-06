@@ -11,24 +11,30 @@ public class Jokenpo {
     String jogarNovamente;
     String nomeEscolhaJogador;
     String nomeEscolhaComputador;
-
+    String reset = "\u001B[0m";
+    String red = "\u001B[31m";
+    String green = "\u001B[32m";
+    String yellow = "\u001B[33m";
+    String blue = "\u001B[34m";
+    String backgroundGrey = "\033[48;5;236m";
+    //\033[48;5;Xm
     public void iniciarJogo(){
-        System.out.println("----------------------------------------");
-        System.out.println("**************  JOKÊNPO  ***************");
-        System.out.println("----------------------------------------\n");
-        System.out.println("       >>> ESCOLHA UMA OPÇÃO <<<\n");
-        System.out.println("----------------------------------------");
-        System.out.println("|             (1) - PEDRA              |");
-        System.out.println("|             (2) - PAPEL              |");
-        System.out.println("|             (3) - TESOURA            |");
-        System.out.println("----------------------------------------");
+        System.out.println(backgroundGrey + "----------------------------------------" + reset);
+        System.out.println(backgroundGrey + "**************  JOKÊNPO  ***************" + reset);
+        System.out.println(backgroundGrey + "----------------------------------------" + reset);
+        System.out.println(backgroundGrey + "       >>> ESCOLHA UMA OPÇÃO <<<        " + reset);
+        System.out.println(backgroundGrey + "----------------------------------------" + reset);
+        System.out.println(backgroundGrey + "|             (1) - PEDRA              |" + reset);
+        System.out.println(backgroundGrey + "|             (2) - PAPEL              |" + reset);
+        System.out.println(backgroundGrey + "|             (3) - TESOURA            |" + reset);
+        System.out.println(backgroundGrey + "----------------------------------------" + reset);
 
         receberDados();
     }
 
     public void receberDados(){
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Escolha uma opção: ");
+        System.out.print(blue + "Escolha uma opção: " + reset);
         escolhaJogador = scanner.nextInt();
 
         randomizarEscolhaDoComputador();
@@ -44,21 +50,21 @@ public class Jokenpo {
 
     public void verificarResultado(){
         if (escolhaJogador == escolhaComputador){
-            resultado = "***** VOCÊ EMPATOU *****";
+            resultado = yellow + "***** VOCÊ EMPATOU *****" + reset;
         } else if (escolhaJogador == 1 && escolhaComputador == 2) {
-            resultado = "***** VOCÊ PERDEU *****";
+            resultado =red + "***** VOCÊ PERDEU ***** " + reset;
         } else if (escolhaJogador == 1 && escolhaComputador == 3) {
-            resultado = "***** VOCÊ GANHOU *****";
+            resultado = green + "***** VOCÊ GANHOU ***** " + reset;
         } else if (escolhaJogador == 2 && escolhaComputador == 1) {
-            resultado = "***** VOCÊ GANHOU *****";
+            resultado = green + "***** VOCÊ GANHOU ***** " + reset;
         } else if (escolhaJogador == 2 && escolhaComputador == 3) {
-            resultado = "***** VOCÊ PERDEU *****";
+            resultado = red + "***** VOCÊ PERDEU ***** " + reset;
         } else if (escolhaJogador == 3 && escolhaComputador == 1) {
-            resultado = "***** VOCÊ PERDEU *****";
+            resultado = red + "***** VOCÊ PERDEU ***** " + reset;
         } else if (escolhaJogador == 3 && escolhaComputador == 2) {
-            resultado = "***** VOCÊ GANHOU *****";
+            resultado = green + "***** VOCÊ GANHOU ***** " + reset;
         } else{
-            System.out.println("Por favor, escolha uma opção valida");
+            System.out.println( red + "Por favor, escolha uma opção valida" + reset);
             receberDados();
         }
 
@@ -67,17 +73,17 @@ public class Jokenpo {
 
     public void definirNomeDaEScolha(){
         if (escolhaJogador == 1){
-            nomeEscolhaJogador = "Pedra";
+            nomeEscolhaJogador = "Pedra  ";
         } else if (escolhaJogador == 2){
-            nomeEscolhaJogador = "Papel";
+            nomeEscolhaJogador = "Papel  ";
         } else if (escolhaJogador == 3) {
             nomeEscolhaJogador = "Tesoura";
         }
 
         if (escolhaComputador == 1){
-            nomeEscolhaComputador = "Pedra";
+            nomeEscolhaComputador = "Pedra  ";
         } else if (escolhaComputador == 2){
-            nomeEscolhaComputador = "Papel";
+            nomeEscolhaComputador = "Papel  ";
         } else if (escolhaComputador == 3) {
             nomeEscolhaComputador = "Tesoura";
         }
@@ -86,11 +92,13 @@ public class Jokenpo {
     }
 
     public void exibirResultado(){
-        System.out.println("----------------------------------------\n");
-        System.out.println("        Você escolheu: " + nomeEscolhaJogador + "\n");
-        System.out.println("        O Computador escolheu: " + nomeEscolhaComputador + "\n");
-        System.out.println("        " + resultado + "\n");
-        System.out.println("----------------------------------------\n");
+        System.out.println(backgroundGrey + "----------------------------------------" + reset);
+        System.out.println(backgroundGrey + "                                        " + reset);
+        System.out.println(backgroundGrey + "        Você escolheu: " + green + nomeEscolhaJogador + "          " + reset);
+        System.out.println(backgroundGrey + "        O Computador escolheu: " + green + nomeEscolhaComputador + "  " + reset);
+        System.out.println(backgroundGrey + "        " + resultado + backgroundGrey + "        "  + reset);
+        System.out.println(backgroundGrey + "                                        " + reset);
+        System.out.println(backgroundGrey + "----------------------------------------" + reset);
 
 
         reiniciarJogo();
@@ -99,17 +107,17 @@ public class Jokenpo {
     public void reiniciarJogo(){
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Jogar novamente (S/N)? ");
+        System.out.println( blue + "Jogar novamente (S/N)? " + reset);
         jogarNovamente = scanner.nextLine();
 
         if (jogarNovamente.equals("s") || jogarNovamente.equals("S")){
             iniciarJogo();
         } else if (jogarNovamente.equals("n") || jogarNovamente.equals("N")){
-            System.out.println("Obrigado por jogar!");
+            System.out.println(blue + "------ Obrigado por jogar! ------" + reset);
         }else{
-            System.out.println("Por favor, escolha uma opção valida");
+            System.out.println( red + "Por favor, escolha uma opção valida" + reset);
             reiniciarJogo();
         }
-        }
     }
+}
 
